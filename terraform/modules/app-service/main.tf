@@ -97,7 +97,7 @@ resource "azurerm_linux_web_app" "backend_app" {
   }
 
   app_settings = {
-    "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
+    # "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
     "DOCKER_REGISTRY_SERVER_URL"          = "https://${azurerm_container_registry.container-registry.name}.azurecr.io"
     "DOCKER_REGISTRY_SERVER_USERNAME"     = azurerm_container_registry.container-registry.name
     # password == access key
@@ -156,7 +156,7 @@ resource "azurerm_linux_web_app" "frontend_app" {
   }
 
   app_settings = {
-    "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
+    # "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
     "DOCKER_REGISTRY_SERVER_URL"          = "https://${azurerm_container_registry.container-registry.name}.azurecr.io"
     "DOCKER_REGISTRY_SERVER_USERNAME"     = azurerm_container_registry.container-registry.name
     # password == access key
