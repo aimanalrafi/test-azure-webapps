@@ -3,7 +3,7 @@ const app = express();
 
 // prints hello
 app.get('/', (req, res) => {
-  res.send('Welcome to our application!');
+  res.send('Welcome to our application (testing the new ACR task)!');
 });
 
 // app.get('/hello', (req, res) => {
