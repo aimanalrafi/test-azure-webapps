@@ -96,7 +96,20 @@ resource "azurerm_linux_web_app" "backend_app" {
     remote_debugging_enabled = true
   }
 
+  logs {
+    detailed_error_messages = true
+    failed_request_tracing  = true
+
+    http_logs {
+        file_system {
+            retention_in_days = 2
+            retention_in_mb   = 35
+        }
+    }
+  }
+
   app_settings = {
+    "DOCKER_ENABLE_CI"                    = "true"
     # "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
     "DOCKER_REGISTRY_SERVER_URL"          = "https://${azurerm_container_registry.container-registry.name}.azurecr.io"
     "DOCKER_REGISTRY_SERVER_USERNAME"     = azurerm_container_registry.container-registry.name
@@ -104,6 +117,7 @@ resource "azurerm_linux_web_app" "backend_app" {
     "DOCKER_REGISTRY_SERVER_PASSWORD"     = "4LPnZ2eKn7qFT0bH7raXkCrF6EJtPJaiq9EOHRARsD+ACRBiINDJ" 
     # exposed backend port 
     "WEBSITES_PORT"                       = "3000"
+
 
     # These are app specific environment variables
 
@@ -155,7 +169,20 @@ resource "azurerm_linux_web_app" "frontend_app" {
 
   }
 
+  logs {
+    detailed_error_messages = true
+    failed_request_tracing  = true
+
+    http_logs {
+        file_system {
+            retention_in_days = 2
+            retention_in_mb   = 35
+        }
+    }
+  }
+
   app_settings = {
+    "DOCKER_ENABLE_CI"                    = "true"
     # "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
     "DOCKER_REGISTRY_SERVER_URL"          = "https://${azurerm_container_registry.container-registry.name}.azurecr.io"
     "DOCKER_REGISTRY_SERVER_USERNAME"     = azurerm_container_registry.container-registry.name
@@ -163,6 +190,7 @@ resource "azurerm_linux_web_app" "frontend_app" {
     "DOCKER_REGISTRY_SERVER_PASSWORD"     = "4LPnZ2eKn7qFT0bH7raXkCrF6EJtPJaiq9EOHRARsD+ACRBiINDJ" 
     # exposed backend port (see Dockerfile)
     "WEBSITES_PORT"                       = "3001"
+
 
     # These are app specific environment variables
 
