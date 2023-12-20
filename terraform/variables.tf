@@ -19,13 +19,25 @@ variable "location" {
 variable "address_space" {
   type        = string
   description = "Virtual Network address space"
-  default     = "10.11.0.0/16"
+  default     = "10.0.0.0/16"
 }
 
-variable "app_subnet_prefix" {
+variable "integration_subnet_prefix" {
   type        = string
-  description = "Application subnet prefix"
-  default     = "10.11.0.0/24"
+  description = "Integration subnet prefix"
+  default     = "10.0.0.0/24"
+}
+
+variable "private_endpoints_subnet_prefix" {
+  type        = string
+  description = "Private Endpoints subnet prefix"
+  default     = "10.0.1.0/24"
+}
+
+variable "rabbitmq_subnet_prefix" {
+  type        = string
+  description = "RabbitMQ subnet prefix"
+  default     = "10.0.2.0/24"
 }
 
 # variable "database_subnet_prefix" {

@@ -24,7 +24,7 @@ variable "address_space" {
   description = "VNet address space"
 }
 
-variable "app_subnet_prefix" {
+variable "integration_subnet_prefix" {
   type        = string
   description = "Application subnet prefix"
 }

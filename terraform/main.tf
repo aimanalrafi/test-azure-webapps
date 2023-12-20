@@ -108,7 +108,7 @@ module "network" {
   service_endpoints = ["Microsoft.Sql", "Microsoft.Storage", "Microsoft.ContainerRegistry"]
 
   address_space     = var.address_space
-  app_subnet_prefix = var.app_subnet_prefix
+  integration_subnet_prefix = var.integration_subnet_prefix
 
   # database_subnet_prefix = var.database_subnet_prefix
 

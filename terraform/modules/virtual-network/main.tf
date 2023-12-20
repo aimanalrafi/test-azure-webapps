@@ -35,7 +35,7 @@ resource "azurerm_subnet" "app_subnet" {
   name                 = azurecaf_name.app_subnet.result
   resource_group_name  = var.resource_group
   virtual_network_name = azurerm_virtual_network.virtual_network.name
-  address_prefixes     = [var.app_subnet_prefix]
+  address_prefixes     = [var.integration_subnet_prefix]
   service_endpoints    = var.service_endpoints
   delegation {
     name = "${var.application_name}-delegation"
