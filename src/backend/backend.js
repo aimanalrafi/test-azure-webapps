@@ -8,9 +8,10 @@ app.get('/', (req, res) => {
 });
 
 
-// app.get('/hello', (req, res) => {
-//     res.status(200).json({ message: 'Hello from Backend B!'});
-// });
+app.get('/hello', (req, res) => {
+    res.status(200).json({ message: 'Hello from Backend B!'});
+    res.send('check your inbox ;)');
+});
 
 app.listen(3000, () => {
   console.log('Backend listening on port 3000');
