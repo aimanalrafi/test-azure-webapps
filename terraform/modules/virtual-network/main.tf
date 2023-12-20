@@ -25,14 +25,14 @@ resource "azurerm_virtual_network" "virtual_network" {
   }
 }
 
-resource "azurecaf_name" "app_subnet" {
+resource "azurecaf_name" "integration_subnet" {
   name          = var.application_name
   resource_type = "azurerm_subnet"
-  suffixes      = [var.environment, "app"]
+  suffixes      = [var.environment, "integration"]
 }
 
-resource "azurerm_subnet" "app_subnet" {
-  name                 = azurecaf_name.app_subnet.result
+resource "azurerm_subnet" "integration_subnet" {
+  name                 = azurecaf_name.integration_subnet.result
   resource_group_name  = var.resource_group
   virtual_network_name = azurerm_virtual_network.virtual_network.name
   address_prefixes     = [var.integration_subnet_prefix]
@@ -40,11 +40,40 @@ resource "azurerm_subnet" "app_subnet" {
   delegation {
     name = "${var.application_name}-delegation"
 
+    # serverFarms must be delegated for VNet integration
     service_delegation {
       name    = "Microsoft.Web/serverFarms"
       actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
     }
   }
+}
+
+resource "azurecaf_name" "private_endpoint_subnet" {
+  name          = var.application_name
+  resource_type = "azurerm_subnet"
+  suffixes      = [var.environment, "private_endpoint"]
+}
+
+
+resource "azurerm_subnet" "private_endpoint_subnet" {
+  name                 = azurecaf_name.private_endpoint_subnet.result
+  resource_group_name  = var.resource_group
+  virtual_network_name = azurerm_virtual_network.virtual_network.name
+  address_prefixes     = [var.private_endpoint_subnet_prefix]
+}
+
+resource "azurecaf_name" "rabbitmq_subnet" {
+  name          = var.application_name
+  resource_type = "azurerm_subnet"
+  suffixes      = [var.environment, "rabbitmq"]
+}
+
+
+resource "azurerm_subnet" "rabbitmq_subnet" {
+  name                 = azurecaf_name.rabbitmq_subnet.result
+  resource_group_name  = var.resource_group
+  virtual_network_name = azurerm_virtual_network.virtual_network.name
+  address_prefixes     = [var.rabbitmq_subnet_prefix]
 }
 
 # resource "azurecaf_name" "database_subnet" {

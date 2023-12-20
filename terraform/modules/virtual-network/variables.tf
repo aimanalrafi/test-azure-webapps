@@ -26,7 +26,17 @@ variable "address_space" {
 
 variable "integration_subnet_prefix" {
   type        = string
-  description = "Application subnet prefix"
+  description = "Integration subnet prefix"
+}
+
+variable "rabbitmq_subnet_prefix" {
+  type        = string
+  description = "RabbitMQ subnet prefix"
+}
+
+variable "private_endpoints_subnet_prefix" {
+  type        = string
+  description = "Private Endpoints subnet prefix"
 }
 
 variable "service_endpoints" {

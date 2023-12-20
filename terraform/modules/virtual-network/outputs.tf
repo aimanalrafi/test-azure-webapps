@@ -3,9 +3,19 @@ output "virtual_network_id" {
   description = "Application Virtual Network"
 }
 
-output "app_subnet_id" {
-  value       = azurerm_subnet.app_subnet.id
-  description = "Application Subnet"
+output "integration_subnet_id" {
+  value       = azurerm_subnet.integration_subnet.id
+  description = "Integration Subnet"
+}
+
+output "private_endpoint_subnet_id" {
+  value       = azurerm_subnet.private_endpoint_subnet.id
+  description = "Private endpoint Subnet"
+}
+
+output "rabbitmq_subnet_id" {
+  value       = azurerm_subnet.rabbitmq_subnet.id
+  description = "RabbitMQ Subnet"
 }
 
 # output "database_subnet_id" {

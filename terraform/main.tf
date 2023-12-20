@@ -64,7 +64,7 @@ module "application" {
   # azure_storage_blob_endpoint = module.storage-blob.azurerm_storage_blob_endpoint
   # azure_storage_account_key   = module.storage-blob.azurerm_storage_account_key
 
-  subnet_id = module.network.app_subnet_id
+  integration_subnet_id = module.network.integration_subnet_id
 }
 
 # module "database" {
@@ -94,7 +94,7 @@ module "application" {
 #   application_name = var.application_name
 #   environment      = local.environment
 #   location         = var.location
-#   subnet_id        = module.network.app_subnet_id
+#   subnet_id        = module.network.integration_subnet_id
 #   myip             = local.myip
 # }
 
@@ -109,6 +109,8 @@ module "network" {
 
   address_space     = var.address_space
   integration_subnet_prefix = var.integration_subnet_prefix
+  private_endpoints_subnet_prefix = var.private_endpoints_subnet_prefix
+  rabbitmq_subnet_prefix = var.rabbitmq_subnet_prefix
 
   # database_subnet_prefix = var.database_subnet_prefix
 
