@@ -3,7 +3,7 @@ const app = express();
 
 // prints hello
 app.get('/', (req, res) => {
-  res.send('Test CI of App');
+  res.send('Test CI of App again. Please work');
 });
 
 // app.get('/hello', (req, res) => {
