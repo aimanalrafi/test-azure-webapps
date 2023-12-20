@@ -12,6 +12,6 @@ app.get('/', (req, res) => {
 //     res.status(200).json({ message: 'Hello from Backend B!'});
 // });
 
-// app.listen(3000, () => {
-//   console.log('Backend listening on port 3000');
-// });
+app.listen(3000, () => {
+  console.log('Backend listening on port 3000');
+});
