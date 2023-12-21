@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 
 app.get('/hello', (req, res) => {
   // Send a GET request to Backend B
-  fetch('http://app-demo-2872-3146-backend-dev.azurewebsites.net/hello')
+  fetch('https://app-test-infrastructure-mp-backend-dev.azurewebsites.net/hello')
     .then(response => response.json())
     .then(data => {
       res.status(200).send(`Message from Backend B: ${data.message}`);
