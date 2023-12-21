@@ -48,18 +48,18 @@ resource "azurerm_subnet" "integration_subnet" {
   }
 }
 
-resource "azurecaf_name" "private_endpoint_subnet" {
+resource "azurecaf_name" "private_endpoints_subnet" {
   name          = var.application_name
   resource_type = "azurerm_subnet"
   suffixes      = [var.environment, "private_endpoint"]
 }
 
 
-resource "azurerm_subnet" "private_endpoint_subnet" {
-  name                 = azurecaf_name.private_endpoint_subnet.result
+resource "azurerm_subnet" "private_endpoints_subnet" {
+  name                 = azurecaf_name.private_endpoints_subnet.result
   resource_group_name  = var.resource_group
   virtual_network_name = azurerm_virtual_network.virtual_network.name
-  address_prefixes     = [var.private_endpoint_subnet_prefix]
+  address_prefixes     = [var.private_endpoints_subnet_prefix]
 }
 
 resource "azurecaf_name" "rabbitmq_subnet" {

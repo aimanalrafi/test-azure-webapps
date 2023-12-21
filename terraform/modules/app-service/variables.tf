@@ -59,7 +59,7 @@ variable "location" {
 #   description = "The Azure Cache for Redis password"
 # }
 
-variable "subnet_id" {
+variable "integration_subnet_id" {
   type        = string
   description = "The subnet the app can use"
 }

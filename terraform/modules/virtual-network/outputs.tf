@@ -8,8 +8,8 @@ output "integration_subnet_id" {
   description = "Integration Subnet"
 }
 
-output "private_endpoint_subnet_id" {
-  value       = azurerm_subnet.private_endpoint_subnet.id
+output "private_endpoints_subnet_id" {
+  value       = azurerm_subnet.private_endpoints_subnet.id
   description = "Private endpoint Subnet"
 }
 

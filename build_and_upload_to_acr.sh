@@ -6,8 +6,8 @@ echo "current working directory: $(pwd)"
 
 cd backend
 
-az acr build --registry crdemo28723146dev --image backend_image:latest .
+az acr build --registry crtestinfrastructurempdev --image backend_image:latest .
 
 cd ../frontend
 
-az acr build --registry crdemo28723146dev --image frontend_image:latest .
+az acr build --registry crtestinfrastructurempdev --image frontend_image:latest .

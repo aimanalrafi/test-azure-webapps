@@ -114,7 +114,7 @@ resource "azurerm_linux_web_app" "backend_app" {
     "DOCKER_REGISTRY_SERVER_URL"          = "https://${azurerm_container_registry.container-registry.name}.azurecr.io"
     "DOCKER_REGISTRY_SERVER_USERNAME"     = azurerm_container_registry.container-registry.name
     # password == access key
-    "DOCKER_REGISTRY_SERVER_PASSWORD"     = "4LPnZ2eKn7qFT0bH7raXkCrF6EJtPJaiq9EOHRARsD+ACRBiINDJ" 
+    "DOCKER_REGISTRY_SERVER_PASSWORD"     = "3QQZmPF6mgNvr8u46upW+Ei2YpCQ1TxvDuiT8ubrTF+ACRDf1aW3" 
     # exposed backend port 
     "WEBSITES_PORT"                       = "3000"
 
@@ -187,7 +187,7 @@ resource "azurerm_linux_web_app" "frontend_app" {
     "DOCKER_REGISTRY_SERVER_URL"          = "https://${azurerm_container_registry.container-registry.name}.azurecr.io"
     "DOCKER_REGISTRY_SERVER_USERNAME"     = azurerm_container_registry.container-registry.name
     # password == access key
-    "DOCKER_REGISTRY_SERVER_PASSWORD"     = "4LPnZ2eKn7qFT0bH7raXkCrF6EJtPJaiq9EOHRARsD+ACRBiINDJ" 
+    "DOCKER_REGISTRY_SERVER_PASSWORD"     = "3QQZmPF6mgNvr8u46upW+Ei2YpCQ1TxvDuiT8ubrTF+ACRDf1aW3" 
     # exposed backend port (see Dockerfile)
     "WEBSITES_PORT"                       = "3001"
 
@@ -210,5 +210,5 @@ resource "azurerm_linux_web_app" "frontend_app" {
 
 resource "azurerm_app_service_virtual_network_swift_connection" "swift_connection" {
   app_service_id = azurerm_linux_web_app.frontend_app.id
-  subnet_id      = var.subnet_id
+  subnet_id      = var.integration_subnet_id
 }
